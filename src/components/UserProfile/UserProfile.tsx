@@ -1,5 +1,11 @@
 import { Avatar, Box, Text, useColorModeValue } from '@chakra-ui/react';
 
+
+type Props = {
+    avatar: string,
+    username: string
+}
+
 export const UserProfile: React.FC = () => {
     return (
         <Box textAlign={'center'}>
@@ -10,11 +16,8 @@ export const UserProfile: React.FC = () => {
             alt={'Jenny Wilson'}
             mb={2}
             />
-
             <Text fontWeight={600}>Jenny Wilson</Text>
-            <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>
-            Vice President
-            </Text>
+            <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>Vice President</Text>
       </Box>
     )
 }
