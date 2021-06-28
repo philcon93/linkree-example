@@ -14,7 +14,7 @@ export const EventsDetails: React.FC<Props> = ({ events } : Props) => {
             key={index}
             title={event.date}
             subtitle={event.location}
-            url={event.url}
+            onClick={() => window.open(event.url)}
             rightAlignText={event.remainingTickets > 0 ? '' : 'Sold out'} />
         ))}
         <LinkFooter />
