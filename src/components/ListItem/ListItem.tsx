@@ -17,7 +17,7 @@ export const ListItem: React.FC<Props> = ({ title, subtitle, url, image, rightAl
       py={4}
       borderBottom={'1px solid #DADEE0'}
       _hover={{ cursor: 'pointer' }}
-      onClick={() => location.assign(url)}>
+      onClick={() => window.open(url)}>
       {
         image && <Box paddingRight={5}><Image src={image} /></Box>
       }

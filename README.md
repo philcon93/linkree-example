@@ -22,7 +22,15 @@ Runs the app in the development mode. Open [http://localhost:3000](http://localh
 
 ## Functionality
 
+- Shows Classic, Events and Music links
+- Loads in links based on params (try 'philcon93, XXXX), with error page if can't find user
+- Have different link themes based on user
+
 ## Dependencies
+
+- Create React App with TypeScript template
+- Chakra UI for base component library
+- React testing library for unit tests
 
 ## To do
 
@@ -31,14 +39,15 @@ Runs the app in the development mode. Open [http://localhost:3000](http://localh
 / Display Classiclink
 / Display Footer
 / Host on vercel
-- Display ShowLink correct
-- Display MusicLink correct
-- Have links data pulled from a fetch
-- Have the data pull from url param
-- Add in error state for incorrect/no param
+/ Display ShowLink correct
+/ Display MusicLink correct
+- Don't show music player until user clicks a platform
+- Only have the platform image take the user to the platform
 - Add in unit testing
-- update readme
+- Have links data pulled from a fetch to show loading state
+- Have the data pull from url param to show error state for incorrect param
 - add a different user with a different theme
+- update readme
 
 
 - Replaces images with straight svgs so you can update their color

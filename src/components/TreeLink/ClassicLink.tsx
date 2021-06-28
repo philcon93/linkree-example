@@ -19,7 +19,8 @@ export const ClassicLink: React.FC<Props> = ({ backgroundColour, textColour, bor
       height="48px"
       alignItems={'center'}
       justifyContent={'center'}
-      href={url}>
+      href={url}
+      isExternal>
       <span>{title}</span>
     </Link>
 );
