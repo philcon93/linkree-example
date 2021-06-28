@@ -24,7 +24,7 @@ type Props = {
   events?: Event[]
 }
 
-export const CollapseLink: React.FC<Props> = ({ backgroundColour, textColour, borderRadius, title, events }: Props) => {
+export const CollapseLink: React.FC<Props> = ({ backgroundColour, textColour, borderRadius, title }: Props) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
