@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem Required props work correctly 1`] = `
+<div>
+  <div
+    class="css-70qvj9"
+  >
+    <div
+      class="css-th0ams"
+      data-testid="ListItem"
+    >
+      <div
+        class="css-0"
+      >
+        <p
+          class="chakra-text css-504jus"
+        >
+          title text
+        </p>
+      </div>
+      <div
+        class="css-17xejub"
+      />
+      <img
+        class="chakra-image__placeholder css-jbc4oa"
+      />
+    </div>
+  </div>
+</div>
+`;

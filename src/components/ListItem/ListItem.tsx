@@ -26,7 +26,8 @@ export const ListItem: React.FC<Props> = ({ title, subtitle, onClick, image, ima
         borderBottom={'1px solid #DADEE0'}
         _hover={{ cursor: 'pointer' }}
         onClick={onClick}
-        flex={1}>
+        flex={1}
+        data-testid={'ListItem'}>
         <Box>
           <Text fontSize="md">{title}</Text>
           { subtitle && <Text fontSize="sm" paddingTop={1}>{subtitle}</Text>}
