@@ -1,22 +1,16 @@
-import { Avatar, Box, Text, useColorModeValue } from '@chakra-ui/react';
-
+import { Avatar, Box, Text } from '@chakra-ui/react';
 
 type Props = {
-    avatar: string,
+    profileImage: string,
+    name: string,
     username: string
 }
 
-export const UserProfile: React.FC = () => {
+export const UserProfile: React.FC<Props> = ({ profileImage, name, username } : Props) => {
     return (
         <Box textAlign={'center'}>
-            <Avatar
-            src={
-                'https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80'
-            }
-            alt={'Jenny Wilson'}
-            mb={2}
-            />
-            <Text fontWeight={600} color={'#263238'}>@jennyW</Text>
+            <Avatar mb={2} src={profileImage} alt={name} />
+            <Text fontWeight={600} color={'#263238'}>@{username}</Text>
       </Box>
     )
 }
