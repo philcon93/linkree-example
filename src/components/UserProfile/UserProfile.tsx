@@ -16,8 +16,7 @@ export const UserProfile: React.FC = () => {
             alt={'Jenny Wilson'}
             mb={2}
             />
-            <Text fontWeight={600}>Jenny Wilson</Text>
-            <Text fontSize={'sm'} color={useColorModeValue('gray.400', 'gray.400')}>Vice President</Text>
+            <Text fontWeight={600} color={'#263238'}>@jennyW</Text>
       </Box>
     )
 }
