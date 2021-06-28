@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Collapse, Box, Flex, useDisclosure } from '@chakra-ui/react';
 
 // - show link
 //     - title
@@ -16,20 +16,34 @@ type Props = {
   url: string
 }
 
-export const ShowLink: React.FC<Props> = ({ backgroundColour, textColour, borderRadius, title, url}: Props) => (
-    <Flex
-      bg={backgroundColour}
-      _hover={{ cursor: 'pointer', backgroundColor: textColour, color: backgroundColour }}
-      _focus={{ cursor: 'pointer', backgroundColor: textColour, color: backgroundColour }}
-      color={textColour}
-      borderRadius={borderRadius}
-      height="48px"
-      alignItems={'center'}
-      justifyContent={'center'}
-      onClick={() => window.location.assign(url)}>
-      <span>{title}</span>
-    </Flex>
-);
+export const ShowLink: React.FC<Props> = ({ backgroundColour, textColour, borderRadius, title, url }: Props) => {
+  const { isOpen, onToggle } = useDisclosure();
+
+  return (
+    <Box>
+      <Flex
+        bg={backgroundColour}
+        _hover={{ cursor: 'pointer', backgroundColor: textColour, color: backgroundColour }}
+        _focus={{ cursor: 'pointer', backgroundColor: textColour, color: backgroundColour }}
+        color={textColour}
+        borderRadius={borderRadius}
+        height="48px"
+        alignItems={'center'}
+        justifyContent={'center'}
+        onClick={onToggle}>
+        <span>{title}</span>
+      </Flex>
+      <Collapse in={isOpen} animateOpacity>
+        <Box
+          p="40px"
+          color="#263238"
+          bg="#F5F7F8" >
+          Content
+        </Box>
+      </Collapse>
+    </Box>
+  );
+};
 
 ShowLink.defaultProps = {
   backgroundColour: '#39E09B',
