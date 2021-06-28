@@ -1,4 +1,4 @@
-import { Flex } from '@chakra-ui/react';
+import { Link } from '@chakra-ui/react';
 
 type Props = {
   backgroundColour?: string,
@@ -9,18 +9,19 @@ type Props = {
 }
 
 export const ClassicLink: React.FC<Props> = ({ backgroundColour, textColour, borderRadius, title, url}: Props) => (
-    <Flex
+    <Link
+      display={'flex'}
       bg={backgroundColour}
-      _hover={{ cursor: 'pointer', backgroundColor: textColour, color: backgroundColour }}
-      _focus={{ cursor: 'pointer', backgroundColor: textColour, color: backgroundColour }}
+      _hover={{ backgroundColor: textColour, color: backgroundColour }}
+      _focus={{ backgroundColor: textColour, color: backgroundColour }}
       color={textColour}
       borderRadius={borderRadius}
       height="48px"
       alignItems={'center'}
       justifyContent={'center'}
-      onClick={() => window.location.assign(url)}>
+      href={url}>
       <span>{title}</span>
-    </Flex>
+    </Link>
 );
 
 ClassicLink.defaultProps = {
