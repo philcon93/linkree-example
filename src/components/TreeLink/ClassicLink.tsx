@@ -5,7 +5,7 @@ type Props = {
   textColour?: string,
   borderRadius?: number,
   title: string,
-  url: string
+  url?: string
 }
 
 export const ClassicLink: React.FC<Props> = ({ backgroundColour, textColour, borderRadius, title, url}: Props) => (

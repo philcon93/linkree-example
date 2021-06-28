@@ -1,30 +1,19 @@
 import { Collapse, Box, Flex, useDisclosure } from '@chakra-ui/react';
-import { ListItem, MusicPlayer, LinkFooter } from '../index';
-
-// - show link
-//     - title
-//     - event
-//         - date
-//         - location
-//         - url
-//         - remaining tickets
-
-type Event = {
-  date: string,
-  location: string,
-  url: string,
-  remainingTickets: number
-}
+import { EventsDetails, MusicDetails } from '../index';
+import { EventLink, MusicLinkDetails } from '../../store/interfaces'
 
 type Props = {
   backgroundColour?: string,
   textColour?: string,
   borderRadius?: number,
   title: string,
-  events?: Event[]
+  eventsDetails?: EventLink[],
+  musicDetails?: MusicLinkDetails
 }
 
-export const CollapseLink: React.FC<Props> = ({ backgroundColour, textColour, borderRadius, title }: Props) => {
+export const CollapseLink: React.FC<Props> = ({
+  backgroundColour, textColour, borderRadius, title, eventsDetails, musicDetails
+} : Props) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -32,7 +21,7 @@ export const CollapseLink: React.FC<Props> = ({ backgroundColour, textColour, bo
       <Flex
         bg={backgroundColour}
         _hover={{ cursor: 'pointer', backgroundColor: textColour, color: backgroundColour }}
-        _focus={{ cursor: 'pointer', backgroundColor: textColour, color: backgroundColour }}
+        _focus={{ backgroundColor: textColour, color: backgroundColour }}
         color={textColour}
         borderRadius={borderRadius}
         height="48px"
@@ -43,12 +32,12 @@ export const CollapseLink: React.FC<Props> = ({ backgroundColour, textColour, bo
       </Flex>
       <Collapse in={isOpen} animateOpacity>
         <Box px={5} color="#263238" bg="#F5F7F8">
-            <MusicPlayer title={'Siona Records: 2nd Anniversary'} band={'Miss Monique'} progress={20} />
-            <ListItem title={'Apr 02 2019'} subtitle={'The Forum, Melbourne'} url={'http://google.com/'} />
-            <ListItem title={'Apr 02 2019'} subtitle={'Venue Name, Canberra'} rightAlignText={'Sold out'} url={'http://google.com/'} />
-            <ListItem title={'Spotify'} image={'spotify'} url={'http://google.com/'} />
-            <ListItem title={'Apple Music'} image={'apple-music'} url={'http://google.com/'} />
-            <LinkFooter />
+          {
+            eventsDetails && <EventsDetails events={eventsDetails}/>
+          }
+          {
+            musicDetails && <MusicDetails musicDetails={musicDetails} />
+          }
         </Box>
       </Collapse>
     </Box>

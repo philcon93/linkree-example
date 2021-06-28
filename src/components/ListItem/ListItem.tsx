@@ -15,18 +15,15 @@ export const ListItem: React.FC<Props> = ({ title, subtitle, url, image, rightAl
       justifyContent={'center'}
       alignItems={'center'}
       py={4}
-      borderBottom={'1px solid #263238'}
+      borderBottom={'1px solid #DADEE0'}
       _hover={{ cursor: 'pointer' }}
       onClick={() => location.assign(url)}>
       {
-        image &&
-        <Box paddingRight={5}>
-          <Image src={`./assets/icons/${image}.svg`} />
-        </Box>
+        image && <Box paddingRight={5}><Image src={image} /></Box>
       }
       <Box>
         <Text fontSize="md">{title}</Text>
-        { subtitle && <Text fontSize="sm">{subtitle}</Text>}
+        { subtitle && <Text fontSize="sm" paddingTop={1}>{subtitle}</Text>}
       </Box>
       <Spacer />
       {

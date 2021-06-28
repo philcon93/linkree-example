@@ -1,50 +1,39 @@
 import { Box, Container, SimpleGrid } from '@chakra-ui/react';
-import { ClassicLink, PageFooter, CollapseLink, UserProfile } from '../components';
-
-
-// Load in data via route
-// username as param
-// include error page state
-
-// const data = {
-//   user: {
-//       profileImage: 'https://avatars.githubusercontent.com/u/13529653?v=4',
-//       name: 'Phil Connah',
-//       username: 'philcon93'
-//   },
-//   links: [
-//       {
-//           title: 'Instagram', type: 'classic', details: { url: 'https://www.instagram.com/phillycheese93' }
-//       },
-//       {
-//           title: 'Github', type: 'classic', details: { url: 'https://github.com/philcon93' }
-//       },
-//       {
-//           title: 'Shows', type: 'events', details: [ { date: '01/04/2019', venue: 'The Forum, Melbourne', remainingTickets: 20 } ]
-//       },
-//       {
-//           title: 'Music', type: 'music', details: { song: { title: '', band: '', image: '' }, platforms: [{}] }
-//       },
-//   ],
-//   theme: {
-//       backgroundColour: '#39E09B',
-//       textColour: '#263238',
-//       borderRadius: 4
-//   }
-// };
+import { useEffect, useState } from 'react';
+import { ClassicLink, CollapseLink, PageFooter, SkeletalPage, UserProfile } from '../components';
+import { LinkTypes, ResponseData } from '../store/interfaces';
+import { responseData } from '../store/data';
 
 export const LinktreePage: React.FC = () => {
+  const [ data, setData ] = useState<ResponseData>();
+
+  useEffect(() => {
+    setData(responseData);
+  }, []);
 
   return (
     <Container py={10}>
       <Box>
-        <SimpleGrid columns={1} spacing={4} paddingTop={10}>
-        <UserProfile profileImage={'https://avatars.githubusercontent.com/u/13529653?v=4'} name={'Phil Connah'} username={'philcon93'} />
-        <ClassicLink title={'Instagram'} url={'https://www.instagram.com/phillycheese93'} />
-        <ClassicLink title={'Github'} url={'https://github.com/philcon93'} />
-        <CollapseLink title='Shows' />
-        <CollapseLink title={'Music'} />
-      </SimpleGrid>
+        {
+          data ? 
+          <SimpleGrid columns={1} spacing={4} paddingTop={10}>
+          <UserProfile
+            profileImage={data.user.profileImage}
+            name={data.user.name}
+            username={data.user.username} />
+            {
+              data.links.map((link, index) => {
+                if (link.type === LinkTypes.Classic) {
+                  return <ClassicLink key={index} title={link.title} url={link.classicDetails?.url} />
+                } else if (link.type === LinkTypes.Event) {
+                  return <CollapseLink key={index} title={link.title} eventsDetails={link.eventsDetails}/>
+                } else if (link.type === LinkTypes.Music) {
+                  return <CollapseLink key={index} title={link.title} musicDetails={link.musicDetails} />
+                }
+              })
+            }
+          </SimpleGrid> : <SkeletalPage />
+        }
       </Box>
       <PageFooter />
     </Container>
