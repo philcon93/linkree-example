@@ -1,5 +1,5 @@
 import { Box, Container, SimpleGrid } from '@chakra-ui/react';
-import { ClassicLink, Footer, MusicLink, ShowLink, UserProfile } from '../components';
+import { ClassicLink, PageFooter, CollapseLink, UserProfile } from '../components';
 
 
 // Load in data via route
@@ -37,16 +37,16 @@ export const LinktreePage: React.FC = () => {
 
   return (
     <Container py={10}>
-      <Box height={'85vh'}>
+      <Box>
         <SimpleGrid columns={1} spacing={4} paddingTop={10}>
-        <UserProfile profileImage={'https://avatars.githubusercontent.com/u/13529653?v=4'} name={'Phil Connah'} username={'philcon93'}/>
-        <ClassicLink title={'Instagram'} url={'https://www.instagram.com/phillycheese93'}/>
-        <ClassicLink title={'Github'} url={'https://github.com/philcon93'}/>
-        <ShowLink title={'Shows'} url={'www.google.com'}/>
-        <MusicLink title={'Music'} url={'www.google.com'}/>
+        <UserProfile profileImage={'https://avatars.githubusercontent.com/u/13529653?v=4'} name={'Phil Connah'} username={'philcon93'} />
+        <ClassicLink title={'Instagram'} url={'https://www.instagram.com/phillycheese93'} />
+        <ClassicLink title={'Github'} url={'https://github.com/philcon93'} />
+        <CollapseLink title='Shows' />
+        <CollapseLink title={'Music'} />
       </SimpleGrid>
       </Box>
-      <Footer />
+      <PageFooter />
     </Container>
   );
 }

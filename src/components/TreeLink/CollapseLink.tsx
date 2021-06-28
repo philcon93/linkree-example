@@ -1,4 +1,5 @@
 import { Collapse, Box, Flex, useDisclosure } from '@chakra-ui/react';
+import { ListItem, MusicPlayer, LinkFooter } from '../index';
 
 // - show link
 //     - title
@@ -8,15 +9,22 @@ import { Collapse, Box, Flex, useDisclosure } from '@chakra-ui/react';
 //         - url
 //         - remaining tickets
 
+type Event = {
+  date: string,
+  location: string,
+  url: string,
+  remainingTickets: number
+}
+
 type Props = {
   backgroundColour?: string,
   textColour?: string,
   borderRadius?: number,
   title: string,
-  url: string
+  events?: Event[]
 }
 
-export const ShowLink: React.FC<Props> = ({ backgroundColour, textColour, borderRadius, title, url }: Props) => {
+export const CollapseLink: React.FC<Props> = ({ backgroundColour, textColour, borderRadius, title, events }: Props) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -34,18 +42,20 @@ export const ShowLink: React.FC<Props> = ({ backgroundColour, textColour, border
         <span>{title}</span>
       </Flex>
       <Collapse in={isOpen} animateOpacity>
-        <Box
-          p="40px"
-          color="#263238"
-          bg="#F5F7F8" >
-          Content
+        <Box px={5} color="#263238" bg="#F5F7F8">
+            <MusicPlayer title={'Siona Records: 2nd Anniversary'} band={'Miss Monique'} progress={20} />
+            <ListItem title={'Apr 02 2019'} subtitle={'The Forum, Melbourne'} url={'http://google.com/'} />
+            <ListItem title={'Apr 02 2019'} subtitle={'Venue Name, Canberra'} rightAlignText={'Sold out'} url={'http://google.com/'} />
+            <ListItem title={'Spotify'} image={'spotify'} url={'http://google.com/'} />
+            <ListItem title={'Apple Music'} image={'apple-music'} url={'http://google.com/'} />
+            <LinkFooter />
         </Box>
       </Collapse>
     </Box>
   );
 };
 
-ShowLink.defaultProps = {
+CollapseLink.defaultProps = {
   backgroundColour: '#39E09B',
   textColour: '#263238',
   borderRadius: 4

@@ -1,6 +1,7 @@
-export { Footer } from './Footer';
+export { LinkFooter } from './LinkFooter';
 export { ListItem } from './ListItem';
+export { MusicPlayer } from './MusicPlayer';
+export { PageFooter } from './PageFooter';
 export { ClassicLink } from './TreeLink/ClassicLink';
-export { MusicLink } from './TreeLink/MusicLink';
-export { ShowLink } from './TreeLink/ShowLink';
+export { CollapseLink } from './TreeLink/CollapseLink';
 export { UserProfile } from './UserProfile';
