@@ -1,3 +1,10 @@
+export enum PageStatus {
+    Loading = 'Loading',
+    Success = 'Success',
+    Error = 'Error',
+    Update = 'Update'
+}
+
 export enum LinkTypes {
     Classic = 'classic',
     Event = 'events', 

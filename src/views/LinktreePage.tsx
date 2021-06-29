@@ -1,21 +1,44 @@
 import { Box, Container, SimpleGrid } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { ClassicLink, CollapseLink, PageFooter, SkeletalPage, UserProfile } from '../components';
-import { LinkTypes, ResponseData } from '../store/interfaces';
+import { LinkTypes, PageStatus, ResponseData } from '../store/interfaces';
 import { responseData } from '../store/data';
 
+
+const fakeFetchData = (): Promise<ResponseData> => {
+  return new Promise(resolve => { 
+      setTimeout(() => resolve(responseData), 1000);
+  });
+}
+
 export const LinktreePage: React.FC = () => {
+  const [ pageStatus, setPageStatus ] = useState<PageStatus>(PageStatus.Loading);
   const [ data, setData ] = useState<ResponseData>();
 
   useEffect(() => {
-    setData(responseData);
+    fakeFetchData()
+    .then((result: ResponseData) => {
+      setData(result);
+      setPageStatus(PageStatus.Success);
+    }).catch(() => {
+      setPageStatus(PageStatus.Error)
+    });
   }, []);
+
+  if (pageStatus === PageStatus.Error) {
+    return (
+        <span>Error error</span>
+        // <PageEmptyState
+        //     action={{ content: 'Reload page', onAction: () => window.location.reload() }}
+        //     text='There seems to be something off with this page, try reloading the page :)' />
+    )
+  }
 
   return (
     <Container py={10}>
       <Box>
         {
-          data ? 
+          pageStatus === PageStatus.Success && data ? 
           <SimpleGrid columns={1} spacing={4} paddingTop={10}>
           <UserProfile
             profileImage={data.user.profileImage}
