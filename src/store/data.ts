@@ -2,7 +2,10 @@ import { LinkTypes } from './interfaces';
 
 
 export const eventsLinkData = {
-    title: 'Shows', type: LinkTypes.Event, eventsDetails: [
+    id: '03',
+    title: 'Shows',
+    type: LinkTypes.Event,
+    eventsDetails: [
         { date: '01/04/2019', location: 'The Forum, Melbourne', remainingTickets: 10, url: 'https://www.songkick.com/' },
         { date: '02/04/2019', location: 'Venue Name, Canberra', remainingTickets: 0, url: 'https://www.songkick.com/' },
         { date: '03/04/2019', location: 'Venue Name, Sydney', remainingTickets: 2, url: 'https://www.songkick.com/'  },
@@ -11,6 +14,7 @@ export const eventsLinkData = {
 }
 
 export const musicLinkData = {
+    id: '04',
     title: 'Music',
     type: LinkTypes.Music,
     musicDetails: {
@@ -60,10 +64,10 @@ export const responseData = {
     user: { ...user01 },
     links: [
         {
-            title: 'Instagram', type: LinkTypes.Classic, classicDetails: { url: 'https://www.instagram.com/phillycheese93' }
+            id: '01', title: 'Instagram', type: LinkTypes.Classic, classicDetails: { url: 'https://www.instagram.com/phillycheese93' }
         },
         {
-            title: 'Github', type: LinkTypes.Classic, classicDetails: { url: 'https://github.com/philcon93' }
+            id: '02', title: 'Github', type: LinkTypes.Classic, classicDetails: { url: 'https://github.com/philcon93' }
         },
         { ...eventsLinkData },
         { ...musicLinkData }

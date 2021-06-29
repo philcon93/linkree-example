@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import { ListItem, LinkFooter } from '../index';
 import { EventLink } from '../../store/interfaces'
 
@@ -8,16 +9,16 @@ type Props = {
 export const EventsDetails: React.FC<Props> = ({ events } : Props) => {
 
   return (
-    <>
-    {events.map((event, index) => (
+    <Box data-testid={'EventsDetails'}>
+      {events.map((event, index) => (
         <ListItem
             key={index}
             title={event.date}
             subtitle={event.location}
             onClick={() => window.open(event.url)}
             rightAlignText={event.remainingTickets > 0 ? '' : 'Sold out'} />
-        ))}
-        <LinkFooter />
-    </>
+      ))}
+      <LinkFooter />
+    </Box>
   );
 };

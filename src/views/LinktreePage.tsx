@@ -2,14 +2,8 @@ import { Box, Container, SimpleGrid } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { ClassicLink, CollapseLink, PageFooter, SkeletalPage, UserProfile } from '../components';
 import { LinkTypes, PageStatus, ResponseData } from '../store/interfaces';
-import { responseData } from '../store/data';
+import { fakeFetchData } from '../store/utilities';
 
-
-const fakeFetchData = (): Promise<ResponseData> => {
-  return new Promise(resolve => { 
-      setTimeout(() => resolve(responseData), 1000);
-  });
-}
 
 export const LinktreePage: React.FC = () => {
   const [ pageStatus, setPageStatus ] = useState<PageStatus>(PageStatus.Loading);
@@ -43,13 +37,13 @@ export const LinktreePage: React.FC = () => {
             name={data.user.name}
             username={data.user.username} />
             {
-              data.links.map((link, index) => {
+              data.links.map(link => {
                 if (link.type === LinkTypes.Classic) {
-                  return <ClassicLink key={index} title={link.title} url={link.classicDetails?.url} />
+                  return <ClassicLink key={link.id} title={link.title} url={link.classicDetails?.url} />
                 } else if (link.type === LinkTypes.Event) {
-                  return <CollapseLink key={index} title={link.title} eventsDetails={link.eventsDetails}/>
+                  return <CollapseLink key={link.id} id={link.id} title={link.title} eventsDetails={link.eventsDetails}/>
                 } else if (link.type === LinkTypes.Music) {
-                  return <CollapseLink key={index} title={link.title} musicDetails={link.musicDetails} />
+                  return <CollapseLink key={link.id} id={link.id} title={link.title} musicDetails={link.musicDetails} />
                 }
               })
             }

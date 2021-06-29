@@ -38,6 +38,7 @@ export interface EventLink {
 }
 
 interface Link {
+    id: string,
     title: string,
     type: LinkTypes,
     classicDetails?: ClassicLinkDetails,
