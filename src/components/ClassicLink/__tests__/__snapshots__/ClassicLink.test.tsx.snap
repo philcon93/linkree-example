@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClassicLink Displays correctly 1`] = `
+<div>
+  <a
+    class="chakra-link css-1795ggc"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    <span>
+      title text
+    </span>
+  </a>
+</div>
+`;

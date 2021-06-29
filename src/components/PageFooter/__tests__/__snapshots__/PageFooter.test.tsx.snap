@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageFooter Displays correctly 1`] = `
+<div>
+  <a
+    class="chakra-link css-1s8lc44"
+    href="https://linktr.ee/"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    <img
+      alt="Linktree logo"
+      class="chakra-image__placeholder css-0"
+    />
+  </a>
+</div>
+`;

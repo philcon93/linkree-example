@@ -13,7 +13,7 @@ export const MusicPlayer: React.FC<MusicPlayerProps> = ({ albumArt, title, band,
 
   return (
     <Fade in={show} unmountOnExit={true}>
-      <Box py={4}>
+      <Box py={4} data-testid={'MusicPlayer'}>
         <Flex alignItems={'center'} pb={4}>
           <Box pr={4} minW={'64px'}>
             <Image src={albumArt} />

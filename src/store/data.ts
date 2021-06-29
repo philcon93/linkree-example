@@ -44,10 +44,10 @@ export const musicLinkData = {
     }
 };
 
-const user01 = {
+export const user01 = {
     profileImage: 'https://avatars.githubusercontent.com/u/13529653?v=4',
     name: 'Phil Connah',
-    username: 'philcon93'
+    username: 'goat'
 }
 
 const theme01 = {
