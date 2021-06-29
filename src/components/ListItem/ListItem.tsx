@@ -5,17 +5,16 @@ type Props = {
     subtitle?: string,
     onClick: () => void,
     image?: string,
-    imageClick?: () => void,
     rightAlignText?: string
 }
 
-export const ListItem: React.FC<Props> = ({ title, subtitle, onClick, image, imageClick, rightAlignText }: Props) => {
+export const ListItem: React.FC<Props> = ({ title, subtitle, onClick, image, rightAlignText }: Props) => {
 
   return (
     <Flex alignItems={'center'}>
       {
         image &&
-          <Box paddingRight={5} _hover={{ cursor: 'pointer' }} onClick={imageClick}>
+          <Box paddingRight={5} _hover={{ cursor: 'pointer' }} onClick={onClick}>
             <Image src={image} />
           </Box>
       }
