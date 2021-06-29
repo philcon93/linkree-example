@@ -11,6 +11,7 @@ type Props = {
   musicDetails?: MusicLinkDetails
 }
 
+// @todo: Make component keyboard accessible
 export const CollapseLink: React.FC<Props> = ({
   backgroundColour, textColour, borderRadius, title, eventsDetails, musicDetails
 } : Props) => {

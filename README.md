@@ -41,19 +41,15 @@ Runs the app in the development mode. Open [http://localhost:3000](http://localh
 / Host on vercel
 / Display ShowLink correct
 / Display MusicLink correct
-- Don't show music player until user clicks a platform
-- Only have the platform image take the user to the platform
-- Add in unit testing
-- Have links data pulled from a fetch to show loading state
+/ Don't show music player until user clicks a platform
+/ Only have the platform image take the user to the platform
+/ Add in unit testing
+/ Have links data pulled from a fetch to show loading state
+- Ensure only one CollapseLink is open at a time
+- unit test LinktreePage
 - Have the data pull from url param to show error state for incorrect param
 - add a different user with a different theme
 - update readme
-
-
-- Replaces images with straight svgs so you can update their color
-- Make Collapse Link keyboard accessible
-- Have music player... play, indicated by the progress bar
-
 
 ---
 

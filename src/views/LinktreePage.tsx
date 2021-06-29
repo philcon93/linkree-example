@@ -25,12 +25,10 @@ export const LinktreePage: React.FC = () => {
     });
   }, []);
 
+  // @todo: Create error state page to get user to reload the page
   if (pageStatus === PageStatus.Error) {
     return (
         <span>Error error</span>
-        // <PageEmptyState
-        //     action={{ content: 'Reload page', onAction: () => window.location.reload() }}
-        //     text='There seems to be something off with this page, try reloading the page :)' />
     )
   }
 

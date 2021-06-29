@@ -8,6 +8,7 @@ type MusicPlayerProps = {
   progress: number
 }
 
+// @todo: Have music player... play, indicated by the progress bar
 export const MusicPlayer: React.FC<MusicPlayerProps> = ({ albumArt, title, band, show, progress } : MusicPlayerProps) => {
   const text = `${title} - ${band}`;
 
