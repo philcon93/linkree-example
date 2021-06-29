@@ -1,6 +1,5 @@
 import { LinkTypes } from './interfaces';
 
-
 export const eventsLinkData = {
     id: '03',
     title: 'Shows',
@@ -54,10 +53,22 @@ export const user01 = {
     username: 'goat'
 }
 
-const theme01 = {
+export const user02 = {
+    profileImage: 'https://d1fdloi71mui9q.cloudfront.net/2dO9iKa7R9ijJ8402nHq_961961328ed1a3de55d5d083e8dd6793',
+    name: 'Gary Vaynerchuk',
+    username: 'garyvee'
+}
+
+export const theme01 = {
     backgroundColour: '#39E09B',
     textColour: '#263238',
     borderRadius: 4
+}
+
+export const theme02 = {
+    backgroundColour: '#7551e9',
+    textColour: '#fff',
+    borderRadius: 40
 }
 
 export const responseData = {
@@ -74,3 +85,16 @@ export const responseData = {
     ],
     theme: { ...theme01 }
 };
+
+export const garyvee = {
+    user: { ...user02 },
+    links: [
+        {
+            id: '01', title: 'Instagram', type: LinkTypes.Classic, classicDetails: { url: 'https://www.instagram.com/garyvee' }
+        },
+        { ...eventsLinkData },
+        { ...musicLinkData }
+    ],
+    theme: { ...theme02 }
+};
+

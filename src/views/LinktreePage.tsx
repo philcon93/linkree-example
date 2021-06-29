@@ -1,28 +1,31 @@
-import { Box, Container, SimpleGrid } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Box, Container, SimpleGrid } from '@chakra-ui/react';
 import { ClassicLink, CollapseLink, PageFooter, SkeletalPage, UserProfile } from '../components';
 import { LinkTypes, PageStatus, ResponseData } from '../store/interfaces';
 import { fakeFetchData } from '../store/utilities';
 
-
 export const LinktreePage: React.FC = () => {
   const [ pageStatus, setPageStatus ] = useState<PageStatus>(PageStatus.Loading);
   const [ data, setData ] = useState<ResponseData>();
+  const { username } = useParams<{ username: string}>();
 
   useEffect(() => {
-    fakeFetchData()
-    .then((result: ResponseData) => {
-      setData(result);
-      setPageStatus(PageStatus.Success);
-    }).catch(() => {
-      setPageStatus(PageStatus.Error)
-    });
-  }, []);
+    fakeFetchData(username)
+      .then((result: ResponseData) => {
+        setData(result);
+        setPageStatus(PageStatus.Success);
+      }).catch(() => {
+        setPageStatus(PageStatus.Error)
+      });
+  }, [ username ]);
 
   // @todo: Create error state page to get user to reload the page
   if (pageStatus === PageStatus.Error) {
     return (
-        <span>Error error</span>
+      <Container py={10}>
+        <Box textAlign={'center'}><span>Error error</span></Box>
+      </Container>
     )
   }
 
@@ -39,11 +42,11 @@ export const LinktreePage: React.FC = () => {
             {
               data.links.map(link => {
                 if (link.type === LinkTypes.Classic) {
-                  return <ClassicLink key={link.id} title={link.title} url={link.classicDetails?.url} />
+                  return <ClassicLink key={link.id} title={link.title} url={link.classicDetails?.url} theme={data.theme}/>
                 } else if (link.type === LinkTypes.Event) {
-                  return <CollapseLink key={link.id} id={link.id} title={link.title} eventsDetails={link.eventsDetails}/>
+                  return <CollapseLink key={link.id} id={link.id} title={link.title} eventsDetails={link.eventsDetails} theme={data.theme}/>
                 } else if (link.type === LinkTypes.Music) {
-                  return <CollapseLink key={link.id} id={link.id} title={link.title} musicDetails={link.musicDetails} />
+                  return <CollapseLink key={link.id} id={link.id} title={link.title} musicDetails={link.musicDetails} theme={data.theme} />
                 }
               })
             }

@@ -1,32 +1,36 @@
 import { Link } from '@chakra-ui/react';
+import { Theme } from '../../store/interfaces';
 
 type Props = {
-  backgroundColour?: string,
-  textColour?: string,
-  borderRadius?: number,
+  theme?: Theme,
   title: string,
-  url?: string
+  url?: string,
+  isExternal?: boolean
 }
 
-export const ClassicLink: React.FC<Props> = ({ backgroundColour, textColour, borderRadius, title, url}: Props) => (
+export const ClassicLink: React.FC<Props> = ({ theme, title, url, isExternal }: Props) => (
     <Link
       display={'flex'}
-      bg={backgroundColour}
-      _hover={{ backgroundColor: textColour, color: backgroundColour }}
-      _focus={{ backgroundColor: textColour, color: backgroundColour }}
-      color={textColour}
-      borderRadius={borderRadius}
+      bg={theme?.backgroundColour}
+      border={`1px solid ${theme?.backgroundColour}`}
+      _hover={{ backgroundColor: theme?.textColour, color: theme?.backgroundColour }}
+      _focus={{ backgroundColor: theme?.textColour, color: theme?.backgroundColour }}
+      color={theme?.textColour}
+      borderRadius={theme?.borderRadius}
       height="48px"
       alignItems={'center'}
       justifyContent={'center'}
       href={url}
-      isExternal>
+      isExternal={isExternal}>
       <span>{title}</span>
     </Link>
 );
 
 ClassicLink.defaultProps = {
-  backgroundColour: '#39E09B',
-  textColour: '#263238',
-  borderRadius: 4
+  theme: {
+    backgroundColour: '#39E09B',
+    textColour: '#263238',
+    borderRadius: 4
+  },
+  isExternal: true
 }

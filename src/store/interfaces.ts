@@ -46,6 +46,12 @@ interface Link {
     musicDetails?: MusicLinkDetails
 }
 
+export interface Theme {
+    backgroundColour: string,
+    textColour: string,
+    borderRadius: number
+}
+
 export interface ResponseData {
     user: {
       profileImage: string,
@@ -53,9 +59,5 @@ export interface ResponseData {
       username: string
     },
     links: Link[],
-    theme: {
-      backgroundColour: string,
-      textColour: string,
-      borderRadius: number
-    }
+    theme: Theme
 }

@@ -1,4 +1,5 @@
 import { act, fireEvent, render, waitFor } from '@testing-library/react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { LinktreePage } from '../';
 import { fakeFetchData } from '../../store/utilities';
 import { responseData } from '../../store/data';
@@ -15,7 +16,7 @@ describe('LinktreePage', () => {
         mockFetchData.mockResolvedValue(responseData);
 
         act(() => {
-            container = render(<LinktreePage />);
+            container = render(<Router><LinktreePage /></Router>);
         });
 
         await waitFor(() => expect(container.queryByText('@goat')).toBeInTheDocument());

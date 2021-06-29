@@ -1,22 +1,18 @@
 import { Collapse, Box, Flex } from '@chakra-ui/react';
 import { useStore } from '../../store/store';
 import { EventsDetails, MusicDetails } from '../index';
-import { EventLink, MusicLinkDetails } from '../../store/interfaces'
+import { EventLink, MusicLinkDetails, Theme } from '../../store/interfaces';
 
 type Props = {
-  backgroundColour?: string,
-  textColour?: string,
-  borderRadius?: number,
   id: string,
+  theme?: Theme,
   title: string,
   eventsDetails?: EventLink[],
   musicDetails?: MusicLinkDetails
 }
 
 // @todo: Make component keyboard accessible
-export const CollapseLink: React.FC<Props> = ({
-  backgroundColour, textColour, borderRadius, id, title, eventsDetails, musicDetails
-} : Props) => {
+export const CollapseLink: React.FC<Props> = ({ theme, id, title, eventsDetails, musicDetails } : Props) => {
   const collapseId = useStore((state) => state.collapseId);
   const setCollapseId = useStore((state) => state.setCollapseId);
 
@@ -31,11 +27,12 @@ export const CollapseLink: React.FC<Props> = ({
   return (
     <Box>
       <Flex
-        bg={backgroundColour}
-        _hover={{ cursor: 'pointer', backgroundColor: textColour, color: backgroundColour }}
-        _focus={{ backgroundColor: textColour, color: backgroundColour }}
-        color={textColour}
-        borderRadius={borderRadius}
+        bg={theme?.backgroundColour}
+        border={`1px solid ${theme?.backgroundColour}`}
+        _hover={{ cursor: 'pointer', backgroundColor: theme?.textColour, color: theme?.backgroundColour }}
+        _focus={{ backgroundColor: theme?.textColour, color: theme?.backgroundColour }}
+        color={theme?.textColour}
+        borderRadius={theme?.borderRadius}
         height="48px"
         alignItems={'center'}
         justifyContent={'center'}
@@ -58,7 +55,9 @@ export const CollapseLink: React.FC<Props> = ({
 };
 
 CollapseLink.defaultProps = {
-  backgroundColour: '#39E09B',
-  textColour: '#263238',
-  borderRadius: 4
+  theme: {
+    backgroundColour: '#39E09B',
+    textColour: '#263238',
+    borderRadius: 4
+  }
 }
