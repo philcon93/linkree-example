@@ -6,6 +6,7 @@ type Props = {
     events: EventLink[]
 }
 
+// @todo: format the title/event.date to be the following; 'Month Date Year', e.g 'Apr 01 2019'
 export const EventsDetails: React.FC<Props> = ({ events } : Props) => {
 
   return (
