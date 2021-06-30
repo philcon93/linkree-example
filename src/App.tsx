@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import { DashboardPage, LinktreePage } from './views';
-import { theme } from './theme';
+import { theme } from './store/theme';
 import '@fontsource/karla';
 
 const App: React.FC = () => {
