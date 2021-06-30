@@ -22,12 +22,13 @@ Runs the app in the development mode. Open [http://localhost:3000](http://localh
 
 ## Functionality
 
-- Shows Classic, Events and Music links
+- Shows Classic, Events and Music Links
 - Loads in links based on params
-- Have different link themes based on user
+- Have different Link theme based on user
 
 ## Dependencies
 
 - Create React App with TypeScript template
 - Chakra UI for base component library
+- React Router for routing
 - React testing library for unit tests
